@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Ranchers&display=swap");
+.video {
+  position: relative;
+  border-radius: 5px;
+}
+.video-container {
+  position: relative;
+}
+.video-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: all 0.3s 0.1s ease;
+}
+.video:hover {
+  z-index: 2;
+}
+.video-thumb img {
+  width: 100%;
+}
+
+/* top-video */
+.top-video {
+  overflow: hidden;
+}
+.top-poster {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  color: #fff;
+}
+.top-poster > img {
+  position: relative;
+  z-index: 1;
+  width: 50%;
+  height: 209px;
+}
+.top-poster > * {
+  flex: 1;
+}
+.top-rank {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+.top-rank span {
+  position: absolute;
+  left: 28px;
+  top: -98px;
+  z-index: -1;
+  font-size: 277px;
+  font-weight: 700;
+  -webkit-text-fill-color: #000;
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: #595959;
+}

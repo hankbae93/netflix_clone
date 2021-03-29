@@ -1,0 +1,172 @@
+.browse header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  width: 100%;
+  padding: 12px 96px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 10%,
+    rgba(0, 0, 0, 0)
+  );
+  transition: all 0.3s ease;
+}
+.browse header.scroll {
+  background: #000;
+}
+.browse header h1 {
+  margin-right: 40px;
+  width: 93px;
+}
+.browse header h1 img {
+  width: 100%;
+}
+.browse header > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.browse header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.browse header ul li {
+  padding: 0 10px;
+}
+.browse header ul a {
+  font-size: 14px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+.browse header ul a:hover {
+  color: #ccc;
+}
+
+.search-video {
+  display: flex;
+  color: #fff;
+}
+.before-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.before-search.focus {
+  display: none;
+}
+.search {
+  overflow: hidden;
+  width: 0;
+  transition: all 0.3s ease;
+}
+.search.focus {
+  width: 263px;
+}
+.search div {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+label[for="search"] {
+  width: 100%;
+  position: relative;
+  display: block;
+  transition: all 0.3s ease;
+}
+.search-mark {
+  left: 6px;
+}
+.search-close {
+  position: relative;
+  right: 6px;
+  width: 15px;
+  height: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.search-close span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  border-radius: 5px;
+  background: #fff;
+}
+.search-close span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.search-close span:last-child {
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+#search {
+  padding: 10px 0 10px 32px;
+  width: 100%;
+  background: none;
+  color: #fff;
+  border: 1px solid #fff;
+}
+.user-nav a {
+  cursor: pointer;
+}
+
+/* user-profile */
+.user-profile {
+  position: relative;
+}
+.user-profile .profile {
+  position: absolute;
+  right: 0;
+  top: 46px;
+  width: 180px;
+  background: #000;
+}
+.user-profile .profile::before {
+  content: "";
+  position: absolute;
+  right: 17px;
+  top: -19px;
+  width: 0px;
+  height: 0px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+.user-profile .profile::after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: -15px;
+  padding: 10px;
+}
+.user-profile .profile div {
+  width: 100%;
+  padding: 17px 10px;
+  border: 1px solid #424344;
+}
+.user-profile .profile a {
+  display: block;
+  font-size: 12px;
+}
+.user-profile .profile a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.user-profile .profile > div:first-child > a:first-child {
+  margin: 0 0 15px;
+}
+.user-profile .profile > div:first-child a {
+  display: flex;
+  align-items: center;
+}
+.user-profile .profile > div:first-child img {
+  margin-right: 10px;
+}
+.user-profile .profile > div:last-child a {
+  padding: 5px 0;
+}

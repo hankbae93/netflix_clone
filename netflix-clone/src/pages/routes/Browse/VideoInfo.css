@@ -1,0 +1,127 @@
+.video-info {
+  height: 100%;
+  color: #fff;
+  background: #181818;
+  border-radius: 5px;
+}
+.video-info:hover .video-utils {
+  opacity: 1;
+}
+.video-info img {
+  width: 100%;
+}
+.video-info video {
+  width: 100%;
+  max-height: 248px;
+}
+.video-utils {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  width: 100%;
+  background: #181818;
+  padding: 15px;
+  height: 110px;
+  transition: all 0.3s ease;
+}
+.video-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.video-btns > div button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: #232323;
+  font-size: 14px;
+  color: #fff;
+  transition: all 0.3s ease;
+  border: 2px solid #6d6d6d;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.video-btns > div button:hover {
+  border-color: #fff;
+}
+.video-btns > div button:hover .text {
+  display: block;
+}
+.video-btns .text {
+  display: none;
+  position: absolute;
+  top: 150px;
+  width: 100%;
+}
+.video-btns .text span {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  background: #e6e6e6;
+  color: #000;
+}
+.video-btns .text span b {
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%);
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid #e6e6e6;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+.video-btns > div button > span {
+  display: none;
+  /* position: absolute;
+    display: inline-block; */
+}
+.video-btns > div .btns-play {
+  border: none;
+  color: #000;
+  background: #fff;
+}
+.btns-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btns-user button {
+  margin-right: 8px;
+}
+
+/* video-detail */
+.video-detail {
+  margin: 10px 0 5px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.video-detail b {
+  color: #46d369;
+}
+.video-detail .age {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 0 2px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid #747474;
+}
+.video-genres {
+  font-size: 12px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.video-genres span {
+  padding-right: 5px;
+}

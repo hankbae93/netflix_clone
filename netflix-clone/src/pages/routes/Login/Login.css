@@ -1,0 +1,24 @@
+.login header {
+    position: absolute;
+    left: 30px;
+    top: 20px;
+    z-index: 10;
+  }
+  .login-bg img {
+    width: 100%;
+    height: 140vh;
+  }
+  .login-bg .home-background-shadow {
+    height: 140vh;
+  }
+  
+  .login footer {
+    position: absolute;
+    left: 0;
+    bottom: -40vh;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+  }
+  .login footer > div {
+    padding: 40px 0;
+  }

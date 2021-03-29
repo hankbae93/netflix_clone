@@ -1,0 +1,23 @@
+.sign-up {
+  color: #000;
+}
+.sign-up header {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 56px;
+  border-bottom: 1px solid #ccc;
+}
+.sign-up header img {
+  width: 167px;
+}
+.sign-up header .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2b2b2b;
+  font-size: 20px;
+  font-weight: 600;
+}
+.sign-up header .login:hover {
+  text-decoration: underline;
+}

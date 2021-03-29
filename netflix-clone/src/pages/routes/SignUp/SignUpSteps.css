@@ -1,0 +1,275 @@
+.step {
+  margin: 0 auto;
+  width: 50%;
+  padding: 0 0 140px;
+  text-align: center;
+  color: #000;
+}
+.step-current {
+  font-weight: 700;
+  font-size: 13px;
+  margin: 0 0 5px;
+}
+/* step-intro */
+.step-intro {
+  padding: 140px 140px 0;
+}
+.step-intro img {
+  width: 260px;
+  margin-bottom: 40px;
+}
+.step-intro h2 {
+  margin: 0 0 10px;
+}
+.step-intro-text {
+  line-height: 1.5;
+}
+.step-intro button {
+  margin: 30px 0 0;
+  padding: 10px 50px;
+  width: 340px;
+  color: #fff;
+  background: #e50914;
+  font-size: 18px;
+  cursor: pointer;
+}
+.step-intro-tip {
+  padding: 20px 0;
+  margin: 0 auto 60px;
+  width: 440px;
+  height: 62px;
+  background: #0071eb;
+  color: #fff;
+  text-align: center;
+}
+.sign-up-input {
+  padding: 20px 140px;
+  text-align: left;
+}
+.sign-up-tip {
+  padding: 0 0 10px;
+  font-size: 19px;
+}
+.sign-up-input form label {
+  position: relative;
+  display: block;
+}
+.sign-up-input form label span {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  color: #8c8c8c;
+  transition: all 0.2s ease;
+}
+.sign-up-input form label.focus span {
+  font-size: 13px;
+  top: 5px;
+}
+.sign-up-input form input {
+  padding: 12px 10px 0;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid #ccc;
+  box-sizing: initial;
+}
+.step-email-error {
+  padding: 3px 0;
+  font-size: 13px;
+  color: #b92d2b;
+}
+.sign-up-input .step-check > label {
+  display: flex;
+  justify-content: space-between;
+}
+.sign-up-input .step-check > label div {
+  margin: 0 0 15px;
+  width: 90%;
+}
+.sign-up-input .step-check > label a {
+  color: #0071eb;
+}
+.sign-up-input .step-check input {
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+}
+.sign-up-input button {
+  width: 100%;
+}
+.step-check-error {
+  transform: translateY(10px);
+  font-size: 13px;
+  color: #b92d2b;
+}
+
+/* step-price */
+.step-price-guide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 140px 140px;
+}
+.step-price-guide > img {
+  margin: 120px 0 30px;
+  width: 50px;
+  height: 50px;
+}
+.step-check-tip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 32px 0 0;
+}
+.step-check-tip > li {
+  margin: 0 0 20px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+.step-check-tip > li span {
+  width: 80%;
+}
+.check-tip {
+  margin-right: 15px;
+}
+.check-tip img {
+  width: 19px;
+  height: auto;
+}
+.step-priceinfo button,
+.step-price-guide button {
+  margin: 45px 0 0;
+  padding: 12px 0;
+  width: 340px;
+  color: #fff;
+  background: #e50914;
+  font-size: 18px;
+  cursor: pointer;
+}
+.price-select {
+  padding: 20px 0 0;
+  cursor: pointer;
+}
+.step-priceinfo {
+  margin: 0 auto;
+  width: 960px;
+  padding: 20px 16px 60px;
+  text-align: left;
+}
+.step-priceinfo .step-current {
+  margin: 0 0 15px;
+}
+.step-priceinfo .step-check-tip {
+  align-items: flex-start;
+}
+.step-priceinfo .step-check-tip li {
+  margin: 0 0 10px;
+  width: 80%;
+  justify-content: flex-start;
+}
+.price-tag {
+  display: flex;
+  justify-content: flex-end;
+}
+.price-tag span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  margin-left: 65px;
+  background: #ef6b72;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+}
+.price-tag span::after {
+  content: "";
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid none;
+  border-bottom: 10px solid red;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  transform: translateX(-50%) rotate(180deg);
+}
+.price-tag span.click::after {
+  display: block;
+}
+.price-tag span.click {
+  background: #e50914;
+}
+.price-tag span:last-child {
+  margin-right: 32px;
+}
+.price-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.price-select .price-info:nth-child(5) {
+  border-bottom: none;
+}
+.price-info span {
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  color: #737373;
+  padding: 22px 0;
+  font-weight: 600;
+}
+.price-info span.click {
+  color: #e50914;
+}
+.price-info span:first-child {
+  width: 40%;
+  text-align: left;
+}
+.price-select p {
+  padding: 5px 0 0;
+  color: #737373;
+  font-size: 13px;
+}
+.step-priceinfo button {
+  display: block;
+  margin: 45px auto 0;
+  width: 400px;
+}
+
+/* step-last */
+.step-last {
+  margin: 0 auto;
+  padding: 20px 0 100px;
+  width: 1000px;
+  text-align: center;
+  color: #333;
+}
+.step-last img {
+  margin: 20px 0;
+  width: 50px;
+  height: 50px;
+}
+.step-last h2 {
+  padding: 0 0 30px;
+}
+.step-last h3 {
+  padding: 0 0 30px;
+  font-size: 16px;
+}
+.step-last .warn {
+  margin: 0 0 30px;
+}
+.step-last div:last-child > b {
+  display: block;
+}

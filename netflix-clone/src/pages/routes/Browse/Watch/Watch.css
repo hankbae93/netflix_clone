@@ -1,0 +1,114 @@
+.watch {
+  position: absolute;
+  background: #000;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+}
+.watch-video video {
+  width: 100%;
+  height: 100vh;
+}
+.watch-controls {
+  color: #fff;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+.watch-controls:hover {
+  opacity: 1;
+}
+.back {
+  position: absolute;
+  left: 28px;
+  top: 46px;
+  font-size: 29px;
+  opacity: 1;
+  cursor: pointer;
+}
+.back > a {
+  color: #fff;
+}
+.controls {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 28px 35px;
+}
+
+.progress {
+  position: relative;
+  margin: 0 0 20px;
+  width: 100%;
+  height: 4px;
+  background: #5b5b5b;
+  cursor: pointer;
+}
+.play-time {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: #e50914;
+}
+.play-time span {
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e50914;
+}
+.watch-btns {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.watch-btns button {
+  margin-right: 35px;
+  background: none;
+  cursor: pointer;
+}
+.watch-btns button span {
+  font-size: 34px;
+  color: #fff;
+}
+.btn-basic {
+  flex: 1;
+}
+.watch-btns h1 {
+  flex: 2;
+}
+.btn-util {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+.volume {
+  position: relative;
+}
+.volume-bar {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: -169px;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 168px;
+  border-radius: 15px;
+  background: #262626;
+}
+.volume:hover .volume-bar {
+  display: block;
+}
+.volume-gage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
