@@ -62,13 +62,13 @@ const VideoList = ({ heading, data }) => {
                     </h3>                
                 </div>
 
-                <ul className="list">                    
+                <ul className="list">    
                     <Slider {...settings}>
                         {data.map((info,i) => {                        
                             const { id } = info;
                             return <Video key={id} data={{...info}}/>
                         })}                               
-                    </Slider>
+                    </Slider> 
                 </ul>
             </div>
         </div>
@@ -76,4 +76,5 @@ const VideoList = ({ heading, data }) => {
 };
 
 export default VideoList;
+                    
             

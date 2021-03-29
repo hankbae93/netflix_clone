@@ -1,11 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import fire from '../../../fire';
 import './LoginForm.css';
 
 
 const LoginForm = () => {
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
+    const [loginError, setLoginError] = useState('');
     const idRef = useRef();
     const pwRef = useRef();
     const idErrorRef = useRef();
@@ -57,6 +59,21 @@ const LoginForm = () => {
 
     const onSubmitForm = (e) => {
         e.preventDefault();
+        fire
+            .auth()
+            .signInWithEmailAndPassword(id, pw)
+            .catch(err => {
+                switch(err.code) {
+                    case "auth/invalid-email":
+                    case "auth/user-disabled":
+                    case "auth/user-not-found":
+                        setLoginError(err.message);
+                        break;
+                    case "auth/wrong-password":
+                        setLoginError(err.message);
+                        break;            
+                }
+            })
     };
 
     const idInputManage = {
@@ -69,6 +86,8 @@ const LoginForm = () => {
         onFocus : handlePw,
         onBlur : handlePw
     };
+
+
     return (
         <div className="login-form">
             <h2>로그인</h2>

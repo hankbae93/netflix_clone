@@ -59,31 +59,18 @@ const VideoInfo = ({ data, hoverFadeInfo }) => {
             <img src={large_cover_image} alt={title}/>
             <div className="video-utils">
                 <div className="video-btns">
-                    <div className="btns-user">        
-                        
-                        <button onClick={clickWatch}  className="btns-play">                                
-                            <span className="hide">재생</span><FaPlay/>                                
-                        </button>
-                        
-                        <button onClick={clickAddList} className="btns-add">
-                            <div className="text">
-                                <span>내가 찜한 콘텐츠에서 추가<b></b></span>
-                            </div>
+                    <div className="btns-user">                     
+                        <button onClick={clickWatch}  className="btns-play" title="재생">                                
+                            <span className="hide">재생</span><FaPlay />                                
+                        </button>                        
+                        <button onClick={clickAddList} className="btns-add" title="내가 찜한 콘텐츠에서 추가">                            
                             {myList ? <FaCheck/> : <FaPlus/>}                            
                         </button>
-                        <button onClick={clickLike} className="btns-like">
-                            <div className="text">
-                                <span>좋아요<b></b></span>
-                            </div>
-                            {liked ? <AiFillLike/> : <AiOutlineLike/>}
-                            
+                        <button onClick={clickLike} className="btns-like" title="좋아요">                            
+                            {liked ? <AiFillLike/> : <AiOutlineLike/>}                            
                         </button>
-                        <button onClick={clickDisLike} className="btns-dislike">
-                            <div className="text">
-                                <span>맘에 안들어요<b></b></span>
-                            </div>             
-                            {disLiked ? <AiFillDislike/> : <AiOutlineDislike/>}   
-                            
+                        <button onClick={clickDisLike} className="btns-dislike" title="맘에 안들어요">                               
+                            {disLiked ? <AiFillDislike/> : <AiOutlineDislike/>}                               
                         </button>
                     </div>
                     <div>

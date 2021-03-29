@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import fire from '../../../fire';
 
 const SignUpOneIntro = ({ setNextStep }) => {
   return (
@@ -23,6 +24,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [signUpError, setSignUpError] = useState('');
   const Email = useRef();
   const Password = useRef();
   const checkError = useRef();
@@ -97,6 +99,20 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
         password: password,
       };      
 
+      fire
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .catch(err => {
+            switch(err.code) {
+                case "auth/email-alreday-in-use":
+                case "auth/invalid-email":                
+                  setSignUpError(err.message);
+                  break;
+                case "auth/weak-password":
+                  setSignUpError(err.message);
+                  break;            
+            }
+      });
       // AuthService.signup(test)
       // .then((res) => console.log("success"))      
       // .then((res) => {
@@ -113,6 +129,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
     }
   };
 
+  
   return (
     <div className="step-intro sign-up-input">
       <div className="step-intro-tip">

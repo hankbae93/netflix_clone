@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {Link} from 'react-router-dom';
+import fire from '../../../fire';
 import { FaSearch, FaGift, FaBell } from "react-icons/fa";
 import './BrowseHeader.css';
 
@@ -23,6 +24,7 @@ const SearchVideo = () => {
             setSearchSw(false);
         }        
     };    
+    
 
     return (
         <>
@@ -61,6 +63,14 @@ const SearchVideo = () => {
 
 const Profile = () => {
     const logout = () => localStorage.removeItem('USER_DATA');
+
+    const handleLogOut = () => {
+        fire
+        .auth()
+        .signOut();
+        
+    };
+
     return (
         <div className="profile">            
             <div>
@@ -73,7 +83,7 @@ const Profile = () => {
             <div>
                 <a href="#a">계정</a>
                 <a href="#a">고객센터</a>
-                <a onClick={logout}>Raflix에서 로그아웃</a>
+                <a onClick={handleLogOut}>Raflix에서 로그아웃</a>
             </div>            
         </div>
     );
@@ -97,6 +107,8 @@ const BrowseHeader = () => {
             window.removeEventListener('scroll', afterScrollNav);
         };
     },[scroll]);
+
+    
 
     return (
         <header className={scroll ? 'scroll' : ''}>

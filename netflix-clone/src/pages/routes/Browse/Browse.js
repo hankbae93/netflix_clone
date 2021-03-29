@@ -98,16 +98,14 @@ const Browse = () => {
             movieData= [...res.data.data.movies];                    
             dispatch({ type: GET_MOVIE, data: movieData});
         }); 
-    },[]);      
-    
-
+    },[]);         
     
     return (       
         <MovieContext.Provider value={{
             data, isSearch, dispatch, isWatch
         }}>
             <div className="browse">
-                <BrowseHeader/>                  
+                <BrowseHeader/>                          
                 {isWatch 
                 ? <Watch/> 
                 : <MainVideo/>} 
@@ -118,5 +116,13 @@ const Browse = () => {
 };
 
 export default Browse;
+    
+
+
+
+
+
+
+
             
             
