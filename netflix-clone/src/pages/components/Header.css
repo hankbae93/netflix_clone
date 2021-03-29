@@ -1,0 +1,54 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  padding: 28px 56px;
+  width: 100%;
+  height: auto;
+  z-index: 100;
+  box-sizing: border-box;
+}
+header h1 {
+  margin: 0;
+}
+header h1 img {
+  width: 167px;
+}
+header .login {
+  padding: 7px 16px;
+  background-color: #e50914;
+  border-radius: 5px;
+  cursor: pointer;
+}
+header .login a {
+  margin-bottom: 9px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+@media screen and (max-width: 1450px) {
+  header h1 img {
+    width: 134px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  header {
+    padding: 28px 45px;
+  }
+
+  header h1 img {
+    width: 108px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  header {
+    padding: 28px 5vw;
+  }
+
+  header h1 img {
+    width: 89px;
+  }
+}
