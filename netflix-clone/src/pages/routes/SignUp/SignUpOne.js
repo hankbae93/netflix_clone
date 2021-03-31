@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import fire from '../../../fire';
+import { useAuth } from '../../../AuthContext';
 
 const SignUpOneIntro = ({ setNextStep }) => {
   return (
@@ -20,14 +20,14 @@ const SignUpOneIntro = ({ setNextStep }) => {
 };
 
 const SignUpOneInPut = ({ EMAIL, setUserData }) => {
+  const { signup, currentUser } = useAuth();
   const [email, setEmail] = useState(String(EMAIL));
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [signUpError, setSignUpError] = useState('');
+  const [passwordError, setPasswordError] = useState("");  
   const Email = useRef();
   const Password = useRef();
-  const checkError = useRef();
+  const checkError = useRef();  
 
   const handleEmail = (e) => {
     const emailRule = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -89,44 +89,22 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
     }
   };
 
-  const onSubmitForm = (e) => {
+  
+  const onSubmitForm = async (e) => {
     e.preventDefault();
     if (checkError.current.textContent !== "" && emailError !== "" && passwordError !== "") {
       return;
-    } else {
-      let test = {
-        username: email,
-        password: password,
-      };      
-
-      fire
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .catch(err => {
-            switch(err.code) {
-                case "auth/email-alreday-in-use":
-                case "auth/invalid-email":                
-                  setSignUpError(err.message);
-                  break;
-                case "auth/weak-password":
-                  setSignUpError(err.message);
-                  break;            
-            }
-      });
-      // AuthService.signup(test)
-      // .then((res) => console.log("success"))      
-      // .then((res) => {
-      //   AuthService.login(test).then((res) => {
-      //     console.log('로그인성공');
-      //     const userData = JSON.stringify(res);
-      //     localStorage.setItem('USER_DATA', userData);
-      //   });
-      // });     
+    }
+    
+    try {
       setUserData({
         email,
         password,
       });
-    }
+      await signup(email, password);
+    } catch {
+      alert('중복된 아이디 입니다');
+    }    
   };
 
   
@@ -144,6 +122,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
         복잡한 단계는 모두 없앴습니다.
       </div>
       <form onSubmit={onSubmitForm}>
+
         <div>
           <label ref={Email} className="focus" htmlFor="step-email">
             <span>이메일 주소</span>
@@ -158,6 +137,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
           </label>
           <div className="step-email-error">{emailError}</div>
         </div>
+
         <div>
           <label ref={Password} htmlFor="step-password">
             <span>비밀번호를 추가하세요</span>
@@ -174,6 +154,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
           </label>
           <div className="step-email-error">{passwordError}</div>
         </div>
+
         <div className="step-check">
           <label>
             <input onClick={handleCheck} type="checkbox" />
@@ -200,7 +181,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
 
 const SignUpOne = ({ EMAIL, setUserData }) => {
   const [nextStep, setNextStep] = useState(false);
-  // console.log(EMAIL);
+  
   return (
     <div className="step">
       {!nextStep ? (

@@ -1,13 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {Link} from 'react-router-dom';
-import fire from '../../../fire';
+import { Link, useHistory } from 'react-router-dom';
 import { FaSearch, FaGift, FaBell } from "react-icons/fa";
 import './BrowseHeader.css';
 
 const SearchVideo = () => {
     const [search, setSearch] = useState('');
     const [searchSw, setSearchSw] = useState(false);    
-    const searchBtnRef = useRef();    
+    const searchBtnRef = useRef();     
 
     const handleInput = e => setSearch(e.target.value);
 
@@ -61,14 +60,10 @@ const SearchVideo = () => {
     );
 };
 
-const Profile = () => {
-    const logout = () => localStorage.removeItem('USER_DATA');
-
+const Profile = () => {    
+  
     const handleLogOut = () => {
-        fire
-        .auth()
-        .signOut();
-        
+       
     };
 
     return (

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import fire from '../../../fire';
+import { Link, useHistory } from 'react-router-dom';
+
 import './LoginForm.css';
 
 
@@ -12,6 +12,7 @@ const LoginForm = () => {
     const pwRef = useRef();
     const idErrorRef = useRef();
     const pwErrorRef = useRef();
+    const history = useHistory();
 
     const handleId = (e) => {
         if (id.length < 5) {
@@ -57,24 +58,28 @@ const LoginForm = () => {
         }     
     };
 
+    
+
     const onSubmitForm = (e) => {
         e.preventDefault();
-        fire
-            .auth()
-            .signInWithEmailAndPassword(id, pw)
-            .catch(err => {
-                switch(err.code) {
-                    case "auth/invalid-email":
-                    case "auth/user-disabled":
-                    case "auth/user-not-found":
-                        setLoginError(err.message);
-                        break;
-                    case "auth/wrong-password":
-                        setLoginError(err.message);
-                        break;            
-                }
-            })
+        // fire
+        //     .auth()
+        //     .signInWithEmailAndPassword(id, pw)
+        //     .catch(err => {
+        //         switch(err.code) {
+        //             case "auth/invalid-email":
+        //             case "auth/user-disabled":
+        //             case "auth/user-not-found":
+        //                 setLoginError(err.message);
+        //                 break;
+        //             case "auth/wrong-password":
+        //                 setLoginError(err.message);
+        //                 break;            
+        //         }
+        //     })
+        //     .then(authListener)      
     };
+
 
     const idInputManage = {
         onChange : handleId,
