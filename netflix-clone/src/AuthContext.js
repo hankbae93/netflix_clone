@@ -15,6 +15,10 @@ export function AuthProvider({ children }) {
         return auth.createUserWithEmailAndPassword(email, password);
     };
 
+    const login = (email, password) => {
+        return auth.signInWithEmailAndPassword(email, password);
+    };
+
     useEffect(() => {
         // didmount
         const subscribe = auth.onAuthStateChanged(user => { 
@@ -27,7 +31,8 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
-        signup
+        signup,
+        login
     };
     
     return (

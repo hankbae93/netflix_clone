@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useAuth } from '../../../AuthContext';
 
 import './LoginForm.css';
 
@@ -12,6 +13,7 @@ const LoginForm = () => {
     const pwRef = useRef();
     const idErrorRef = useRef();
     const pwErrorRef = useRef();
+    const { currentUser, login } = useAuth();
     const history = useHistory();
 
     const handleId = (e) => {
@@ -60,24 +62,17 @@ const LoginForm = () => {
 
     
 
-    const onSubmitForm = (e) => {
+    const onSubmitForm = async (e) => {
         e.preventDefault();
-        // fire
-        //     .auth()
-        //     .signInWithEmailAndPassword(id, pw)
-        //     .catch(err => {
-        //         switch(err.code) {
-        //             case "auth/invalid-email":
-        //             case "auth/user-disabled":
-        //             case "auth/user-not-found":
-        //                 setLoginError(err.message);
-        //                 break;
-        //             case "auth/wrong-password":
-        //                 setLoginError(err.message);
-        //                 break;            
-        //         }
-        //     })
-        //     .then(authListener)      
+
+        try {
+            await login(id, pw);
+            history.push('/browse');
+        } catch {
+            setId('');
+            setPw('');
+            alert('이메일이나 비밀번호가 맞지 않습니다');
+        }          
     };
 
 
