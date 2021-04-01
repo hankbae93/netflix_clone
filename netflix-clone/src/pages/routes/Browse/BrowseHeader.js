@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FaSearch, FaGift, FaBell } from "react-icons/fa";
+import { useAuth } from '../../../AuthContext';
 import './BrowseHeader.css';
 
 const SearchVideo = () => {
@@ -61,9 +62,17 @@ const SearchVideo = () => {
 };
 
 const Profile = () => {    
-  
-    const handleLogOut = () => {
-       
+    const { logout } = useAuth();
+    const history = useHistory();
+    const handleLogOut = async (e) => {
+        e.preventDefault();
+       try {
+           await logout();
+           history.push('/');
+       } catch(err){
+            alert('Failed to log out');
+            console.log(err)
+       }
     };
 
     return (
@@ -78,7 +87,7 @@ const Profile = () => {
             <div>
                 <a href="#a">계정</a>
                 <a href="#a">고객센터</a>
-                <a onClick={handleLogOut}>Raflix에서 로그아웃</a>
+                <a href="#a" onClick={handleLogOut}>Raflix에서 로그아웃</a>
             </div>            
         </div>
     );

@@ -19,6 +19,10 @@ export function AuthProvider({ children }) {
         return auth.signInWithEmailAndPassword(email, password);
     };
 
+    const logout = () => {
+        return auth.signOut();
+    };
+
     useEffect(() => {
         // didmount
         const subscribe = auth.onAuthStateChanged(user => { 
@@ -32,7 +36,8 @@ export function AuthProvider({ children }) {
     const value = {
         currentUser,
         signup,
-        login
+        login,
+        logout
     };
     
     return (
@@ -40,4 +45,4 @@ export function AuthProvider({ children }) {
             {!loading && children}
         </AuthContext.Provider>
     )
-}
+};

@@ -1,14 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../AuthContext';
-
 import './LoginForm.css';
 
 
 const LoginForm = () => {
     const [id, setId] = useState('');
-    const [pw, setPw] = useState('');
-    const [loginError, setLoginError] = useState('');
+    const [pw, setPw] = useState('');    
     const idRef = useRef();
     const pwRef = useRef();
     const idErrorRef = useRef();
@@ -58,9 +56,7 @@ const LoginForm = () => {
         } else {            
             setPw(e.target.value);
         }     
-    };
-
-    
+    };    
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
@@ -74,7 +70,6 @@ const LoginForm = () => {
             alert('이메일이나 비밀번호가 맞지 않습니다');
         }          
     };
-
 
     const idInputManage = {
         onChange : handleId,
