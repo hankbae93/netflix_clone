@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../../AuthContext';
+import { useAuth } from '../../../contexts/AuthContext';
 import './LoginForm.css';
 
 
@@ -63,6 +63,7 @@ const LoginForm = () => {
 
         try {
             await login(id, pw);
+            alert(`${currentUser.email}님 환영합니다`);
             history.push('/browse');
         } catch {
             setId('');

@@ -13,7 +13,10 @@ const VideoInfo = ({ data, hoverFadeInfo }) => {
     const clickAddList = () => {        
         dispatch({ 
             type: ADD_MYLIST, 
+            title,
             id,
+            liked,
+            disLiked,
             myList: !data.myList
         });    
     };
@@ -22,7 +25,10 @@ const VideoInfo = ({ data, hoverFadeInfo }) => {
         dispatch({ 
             type: CLICK_LIKE, 
             id,
-            liked: !data.liked
+            title,
+            liked: !data.liked,
+            disLiked,
+            myList
         });        
     };
 
@@ -30,7 +36,10 @@ const VideoInfo = ({ data, hoverFadeInfo }) => {
         dispatch({ 
             type: CLICK_DISLIKE, 
             id,
-            disLiked: !data.disLiked
+            title,
+            liked,
+            disLiked: !data.disLiked,
+            myList
         }); 
     };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SignUpSteps from './SignUpSteps';
-import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import './SignUp.css';
 
@@ -10,8 +9,8 @@ const SIGN_UP_FOOTER = {
     color: '#0071eb',
 };
 
-const SignUp = ({ history, location }) => {
-    const EMAIL = location.state.email;    
+const SignUp = ({ location }) => {
+    const EMAIL = location.state.email;
     return (
         <div className="sign-up">
             <header>

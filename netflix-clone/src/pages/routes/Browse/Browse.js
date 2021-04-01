@@ -1,5 +1,8 @@
 import React, { useEffect, createContext, useReducer } from 'react';
 import axios from 'axios';
+import firebase from 'firebase/app';
+import "firebase/database";
+import { useAuth } from '../../../contexts/AuthContext';
 import BrowseHeader from './BrowseHeader';
 import MainVideo from './MainVideo';
 import Watch from './Watch/Watch';
@@ -27,27 +30,33 @@ export const WATCH = 'WATCH';
 export const WATCH_OFF = 'WATCH_OFF';
 
 const reducer = (state, action) => {
-    const { data } = state;
+    const { data, email } = state;    
     const changeData = [...data];
+    const userChange = {               
+        id : action.id, 
+        liked : action.liked ? action.liked : null ,
+        disLiked : action.disLiked ? action.disLiked : null,            
+        myList : action.myList ? action.myList : null,            
+    };
 
     switch(action.type) {
-        case GET_MOVIE : 
-            const videoDatas = [...action.data];
-            videoDatas.forEach((info,i) => {
-                info.liked = false;
-                info.disLiked = false;
-                info.myList = false;
-            });            
+        case "LOGIN_USER" :
             return {
                 ...state,
-                data : videoDatas
+                email : action.email,                
+            }
+        case GET_MOVIE :                         
+            return {
+                ...state,
+                data : action.data
             }
         case CLICK_LIKE :                        
             changeData.forEach((i) => {
                 if (i.id === action.id) {
                     i.liked = action.liked;
                 }
-            });            
+            });                        
+            firebase.database().ref(`users/${email}/${action.title}`).set(userChange);
             return {
                 ...state,
                 data : changeData
@@ -58,6 +67,7 @@ const reducer = (state, action) => {
                     i.disLiked = action.disLiked;
                 }
             });            
+            firebase.database().ref(`users/${email}/${action.title}`).set(userChange);
             return {
                 ...state,
                 data : changeData
@@ -68,6 +78,7 @@ const reducer = (state, action) => {
                     i.myList = action.myList;
                 }
             });            
+            firebase.database().ref(`users/${email}/${action.title}`).set(userChange);
             return {
                 ...state,
                 data : changeData
@@ -90,15 +101,47 @@ const reducer = (state, action) => {
 const Browse = () => {    
     const [state, dispatch] = useReducer(reducer, initialState);
     const { data, isSearch, isWatch } = state;       
+    const { currentUser } = useAuth();
+    
+
+    const getMovie = () => {        
+        const movieUrl = "https://yts.mx/api/v2/list_movies.json?sort_by=rating";
+        const databaseURL = "https://netflix-clone-9db36-default-rtdb.firebaseio.com";
+        const email = currentUser.email.split('@')[0];
+        let movieData = [];
+
+        axios.get(movieUrl).then((res) => { // Movie APi Fetch
+            movieData= [...res.data.data.movies];               
+            axios.get(`${databaseURL}/users/${email}.json`).then((res) => { // Firebase DB 유저 영화 정보 받아와서 합치기         
+                if(res.data) {
+                    const userMovieData = res.data;                   
+                    movieData.forEach((item, idx) => {                        
+                        if (userMovieData[item.title]) {
+                            const copy = userMovieData[item.title];
+                            movieData[idx].liked = copy.liked;
+                            movieData[idx].disLiked = copy.disLiked;
+                            movieData[idx].myList = copy.myList;                                   
+                        }                                       
+                    });
+                }       
+                dispatch({ type: GET_MOVIE, data: movieData});
+            });
+        });
+    };
+
+    const postUserInfo = () => {
+        const email = currentUser.email.split('@')[0];
+        firebase.database().ref('users/'+email).update({status : true});   
+        dispatch({ type : 'LOGIN_USER', email });   
+    };
 
     useEffect(() => {
-        const movieUrl = "https://yts.mx/api/v2/list_movies.json?sort_by=rating";
-        let movieData = [];
-        axios.get(movieUrl).then((res) => {
-            movieData= [...res.data.data.movies];                    
-            dispatch({ type: GET_MOVIE, data: movieData});
-        }); 
-    },[]);         
+        if (currentUser) {
+            getMovie();    
+            postUserInfo();                   
+        } 
+        return getMovie;
+    },[currentUser]);          
     
     return (       
         <MovieContext.Provider value={{
@@ -116,6 +159,8 @@ const Browse = () => {
 };
 
 export default Browse;
+
+                
     
 
 

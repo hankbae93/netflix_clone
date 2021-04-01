@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FaSearch, FaGift, FaBell } from "react-icons/fa";
-import { useAuth } from '../../../AuthContext';
+import { useAuth } from '../../../contexts/AuthContext';
 import './BrowseHeader.css';
 
 const SearchVideo = () => {
