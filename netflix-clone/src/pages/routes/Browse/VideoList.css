@@ -5,6 +5,9 @@
 .video-list-container.focus {
   overflow: visible;
 }
+.video-list-container.focus .slick-list {
+  overflow: visible;
+}
 .video-list {
   position: relative;
   width: 95%;
