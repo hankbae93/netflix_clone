@@ -21,7 +21,7 @@ const HomeSignUp = () => {
             setLinkRef('/');
         }
         
-    },[email]);
+    },[email, accept]);
 
     const handleEmail = (e) => {
         const emailRule = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;        
@@ -51,7 +51,7 @@ const HomeSignUp = () => {
                     <div className="email-form">
                         <label ref={labelRef} htmlFor="email_input">이메일 주소</label>
                         <input                             
-                        id="email_input"                
+                        className="email_input"                
                         value={email} 
                         onChange={handleEmail}
                         onFocus={handleLabel}

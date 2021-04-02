@@ -144,7 +144,7 @@ const BrowseHeader = () => {
                 >
                     <a href="#a">
                     <span className="hide">내 프로필</span>
-                    <img src="./images/profile.png"/>
+                    <img src="./images/profile.png" alt="프로필"/>
                     </a>
                     {profile && <Profile />}                        
                 </li>

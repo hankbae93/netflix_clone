@@ -5,7 +5,7 @@ const QuestAcordion = ({ quest }) => {
     const openText = useRef();
     useEffect(() => {
         openText.current.innerHTML = quest.answer;
-    },[]);
+    },[quest]);
     const handleClick = (e) => {
         e.target.nextSibling.classList.toggle('open');
         e.target.children[0].classList.toggle('open');

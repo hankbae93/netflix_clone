@@ -21,7 +21,7 @@ const TopVideo = ({ rank,data,setShow }) => {
         return () => {
             clearTimeout(fadeInfo.current);
         };
-    },[fadeInfo.current]);   
+    },[data]);   
    
 
     return (

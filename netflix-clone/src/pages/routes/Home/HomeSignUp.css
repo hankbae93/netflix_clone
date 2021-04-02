@@ -27,7 +27,7 @@ label[for="email_input"].focus {
   font-size: 13px;
   font-weight: 500;
 }
-#email_input {
+.email_input {
   position: relative;
   width: 500px;
   padding: 22px 11px;
@@ -55,7 +55,7 @@ label[for="email_input"].focus {
 }
 
 @media screen and (max-width: 1400px) {
-  #email_input {
+  .email_input {
     width: 450px;
   }
   .email-submit {

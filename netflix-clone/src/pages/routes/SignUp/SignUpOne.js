@@ -20,7 +20,7 @@ const SignUpOneIntro = ({ setNextStep }) => {
 };
 
 const SignUpOneInPut = ({ EMAIL, setUserData }) => {
-  const { signup, currentUser } = useAuth();
+  const { signup } = useAuth();
   const [email, setEmail] = useState(String(EMAIL));
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -160,7 +160,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
             <input onClick={handleCheck} type="checkbox" />
             <div>
               예, 저는{" "}
-              <a href="https://help.netflix.com/legal/privacy" target="_blank">
+              <a href="/">
                 개인정보 처리방침
               </a>
               에 따른 개인정보 수집 및 활용에 동의합니다.

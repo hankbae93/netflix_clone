@@ -21,7 +21,7 @@ const Video = ({ data }) => {
         return () => {
             clearTimeout(fadeInfo.current);
         };
-    },[fadeInfo.current]);    
+    },[data]);    
 
     return (
         <li 

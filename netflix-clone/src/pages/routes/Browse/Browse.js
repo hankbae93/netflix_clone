@@ -3,7 +3,6 @@ import axios from 'axios';
 import firebase from 'firebase/app';
 import "firebase/database";
 import { useAuth } from '../../../contexts/AuthContext';
-import { useHistory } from 'react-router-dom';
 import BrowseHeader from './BrowseHeader';
 import MainVideo from './MainVideo';
 import Watch from './Watch/Watch';
@@ -106,38 +105,7 @@ const Browse = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { data, isSearch, isWatch } = state;       
     const { currentUser } = useAuth();
-    const [loading, setLoading] = useState(false);
-    
-
-    const getMovie = async () => {            
-        const email = currentUser.email.split('@')[0];
-        let movieData = [];
-
-        await axios.get(movieUrl).then((res) => { // Movie APi Fetch
-            movieData= [...res.data.data.movies];               
-            axios.get(`${databaseURL}/users/${email}.json`).then((res) => { // Firebase DB 유저 영화 정보 받아와서 합치기         
-                if(res.data) {
-                    const userMovieData = res.data;                   
-                    movieData.forEach((item, idx) => {                        
-                        if (userMovieData[item.title]) {
-                            const copy = userMovieData[item.title];
-                            movieData[idx].liked = copy.liked;
-                            movieData[idx].disLiked = copy.disLiked;
-                            movieData[idx].myList = copy.myList;                                   
-                        }                                       
-                    });
-                }       
-                dispatch({ type: GET_MOVIE, data: movieData});
-                setLoading(true);
-            });
-        });
-    };
-
-    const postUserInfo = () => {
-        const email = currentUser.email.split('@')[0];
-        firebase.database().ref('users/'+email).update({status : true});   
-        dispatch({ type : 'LOGIN_USER', email });   
-    };    
+    const [loading, setLoading] = useState(false);      
 
     const switchMode = () => {
         if (loading) {
@@ -152,11 +120,41 @@ const Browse = () => {
     };
 
     useEffect(() => {
+        const getMovie = async () => {            
+            const email = currentUser.email.split('@')[0];
+            let movieData = [];
+    
+            await axios.get(movieUrl).then((res) => { // Movie APi Fetch
+                movieData= [...res.data.data.movies];               
+                axios.get(`${databaseURL}/users/${email}.json`).then((res) => { // Firebase DB 유저 영화 정보 받아와서 합치기         
+                    if(res.data) {
+                        const userMovieData = res.data;                   
+                        movieData.forEach((item, idx) => {                        
+                            if (userMovieData[item.title]) {
+                                const copy = userMovieData[item.title];
+                                movieData[idx].liked = copy.liked;
+                                movieData[idx].disLiked = copy.disLiked;
+                                movieData[idx].myList = copy.myList;                                   
+                            }                                       
+                        });
+                    }       
+                    dispatch({ type: GET_MOVIE, data: movieData});
+                    setLoading(true);
+                });
+            });
+        };
+
+        const postUserInfo = () => {
+            const email = currentUser.email.split('@')[0];
+            firebase.database().ref('users/'+email).update({status : true});   
+            dispatch({ type : 'LOGIN_USER', email });   
+        };   
+
         if (currentUser) {
             getMovie();    
             postUserInfo();                   
         } 
-        return getMovie;
+        // return getMovie;
     },[currentUser]);          
     
     return (       

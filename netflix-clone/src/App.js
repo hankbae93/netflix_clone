@@ -14,11 +14,11 @@ function App() {
       <AuthProvider>
         <div className="App">
           <Switch>
-            <PrivateRoute path="/browse" component={Browse} />            
+            <PrivateRoute path="/browse" component={Browse} />                                
             {/* 로그인 인증없이 접속하는 유저 Home페이지로 리다이렉트 */}
             <Route exact path="/" component={Home}/>
-            <Route path="/login" component={Login}/>
-            <Route path="/signup" component={SignUp}/>            
+            <Route path="/login" component={Login}/>                     
+            <Route path="/signup" component={SignUp}/>                     
           </Switch>
         </div>
       </AuthProvider>

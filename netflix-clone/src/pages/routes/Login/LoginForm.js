@@ -60,7 +60,8 @@ const LoginForm = () => {
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
-
+        if (!id && !pw) return;
+        
         try {
             await login(id, pw);
             alert(`${currentUser.email}님 환영합니다`);

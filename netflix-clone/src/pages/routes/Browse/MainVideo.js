@@ -18,7 +18,7 @@ const MainVideo = () => {
                 <div className="main-image"></div>       
                 <div className="main-contents">
                     <div className="main-info">
-                        <h2><img src="https://occ-0-2794-1360.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABc1-jxN2-RryiaP7u0ktNjQL-CUN5hhV2P-37OFbOJ-RsOx4UQ1-B33CXEYCLhu2dJhy3nQAcL33QQFUL8L41KLS-fjcjILS73tW.webp?r=2eb"/></h2>
+                        <h2><img src="https://occ-0-2794-1360.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABc1-jxN2-RryiaP7u0ktNjQL-CUN5hhV2P-37OFbOJ-RsOx4UQ1-B33CXEYCLhu2dJhy3nQAcL33QQFUL8L41KLS-fjcjILS73tW.webp?r=2eb" alt="천원돌파 그렌라간"/></h2>
                         <p>
                         소년이여, 너의 드릴은 하늘을 뚫을 드릴이다. 우주의 끝까지 도달할 운명을 가진 소년, 시몬. 하지만 그의 이야기가 시작된 곳은 땅 밑의 어느 작은 마을이었다.
                         </p>
