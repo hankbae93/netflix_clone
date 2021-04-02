@@ -1,4 +1,4 @@
-import React, { useEffect, createContext, useReducer } from 'react';
+import React, { useState ,useEffect, createContext, useReducer } from 'react';
 import axios from 'axios';
 import firebase from 'firebase/app';
 import "firebase/database";
@@ -6,6 +6,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import BrowseHeader from './BrowseHeader';
 import MainVideo from './MainVideo';
 import Watch from './Watch/Watch';
+import Loading from './Loading';
 import Footer from '../../components/Footer';
 import './Browse.css';
 
@@ -102,15 +103,16 @@ const Browse = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { data, isSearch, isWatch } = state;       
     const { currentUser } = useAuth();
+    const [loading, setLoading] = useState(false);
     
 
-    const getMovie = () => {        
+    const getMovie = async () => {        
         const movieUrl = "https://yts.mx/api/v2/list_movies.json?sort_by=rating";
         const databaseURL = "https://netflix-clone-9db36-default-rtdb.firebaseio.com";
         const email = currentUser.email.split('@')[0];
         let movieData = [];
 
-        axios.get(movieUrl).then((res) => { // Movie APi Fetch
+        await axios.get(movieUrl).then((res) => { // Movie APi Fetch
             movieData= [...res.data.data.movies];               
             axios.get(`${databaseURL}/users/${email}.json`).then((res) => { // Firebase DB 유저 영화 정보 받아와서 합치기         
                 if(res.data) {
@@ -125,6 +127,7 @@ const Browse = () => {
                     });
                 }       
                 dispatch({ type: GET_MOVIE, data: movieData});
+                setLoading(true);
             });
         });
     };
@@ -133,7 +136,7 @@ const Browse = () => {
         const email = currentUser.email.split('@')[0];
         firebase.database().ref('users/'+email).update({status : true});   
         dispatch({ type : 'LOGIN_USER', email });   
-    };
+    };    
 
     useEffect(() => {
         if (currentUser) {
@@ -148,10 +151,11 @@ const Browse = () => {
             data, isSearch, dispatch, isWatch
         }}>
             <div className="browse">
-                <BrowseHeader/>                          
-                {isWatch 
-                ? <Watch/> 
-                : <MainVideo/>} 
+                <BrowseHeader/>                                        
+                { loading 
+                ? <MainVideo />
+                : <Loading />
+                }
                 <Footer style={{backgroundColor: '#000'}} />          
             </div>        
         </MovieContext.Provider>

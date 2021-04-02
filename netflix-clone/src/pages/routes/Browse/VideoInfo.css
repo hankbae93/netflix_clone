@@ -1,4 +1,5 @@
 .video-info {
+  width: 285px;
   height: 100%;
   color: #fff;
   background: #181818;
@@ -9,6 +10,7 @@
 }
 .video-info img {
   width: 100%;
+  height: 100%;
 }
 .video-info video {
   width: 100%;

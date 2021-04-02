@@ -16,6 +16,11 @@
 .video:hover {
   z-index: 2;
 }
+.video-thumb {
+  width: 285px;
+  height: 427.5px;
+  position: relative;
+}
 .video-thumb img {
   width: 100%;
 }
