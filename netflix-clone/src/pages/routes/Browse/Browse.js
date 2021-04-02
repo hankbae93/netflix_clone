@@ -3,6 +3,7 @@ import axios from 'axios';
 import firebase from 'firebase/app';
 import "firebase/database";
 import { useAuth } from '../../../contexts/AuthContext';
+import { useHistory } from 'react-router-dom';
 import BrowseHeader from './BrowseHeader';
 import MainVideo from './MainVideo';
 import Watch from './Watch/Watch';
@@ -10,6 +11,8 @@ import Loading from './Loading';
 import Footer from '../../components/Footer';
 import './Browse.css';
 
+const movieUrl = "https://yts.mx/api/v2/list_movies.json?sort_by=rating";
+const databaseURL = "https://netflix-clone-9db36-default-rtdb.firebaseio.com";
 export const MovieContext = createContext({
     data: [],
     isSearch: false,
@@ -84,7 +87,7 @@ const reducer = (state, action) => {
                 ...state,
                 data : changeData
             }
-        case WATCH :            
+        case WATCH :                 
             return {
                 ...state,
                 isWatch : action.title
@@ -106,9 +109,7 @@ const Browse = () => {
     const [loading, setLoading] = useState(false);
     
 
-    const getMovie = async () => {        
-        const movieUrl = "https://yts.mx/api/v2/list_movies.json?sort_by=rating";
-        const databaseURL = "https://netflix-clone-9db36-default-rtdb.firebaseio.com";
+    const getMovie = async () => {            
         const email = currentUser.email.split('@')[0];
         let movieData = [];
 
@@ -138,6 +139,18 @@ const Browse = () => {
         dispatch({ type : 'LOGIN_USER', email });   
     };    
 
+    const switchMode = () => {
+        if (loading) {
+            if (isWatch) {
+                return <Watch />;
+            } else {
+                return <MainVideo/>
+            }            
+        } else {
+            return <Loading />;
+        }
+    };
+
     useEffect(() => {
         if (currentUser) {
             getMovie();    
@@ -151,11 +164,8 @@ const Browse = () => {
             data, isSearch, dispatch, isWatch
         }}>
             <div className="browse">
-                <BrowseHeader/>                                        
-                { loading 
-                ? <MainVideo />
-                : <Loading />
-                }
+                <BrowseHeader/>                                         
+                {switchMode()}
                 <Footer style={{backgroundColor: '#000'}} />          
             </div>        
         </MovieContext.Provider>

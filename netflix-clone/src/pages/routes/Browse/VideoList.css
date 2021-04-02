@@ -65,6 +65,7 @@
 }
 .slick-list {
   overflow: visible;
+  width: 100%;
 }
 .slick-slide {
   padding: 0 1px;

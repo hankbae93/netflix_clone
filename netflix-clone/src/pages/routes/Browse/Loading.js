@@ -6,7 +6,7 @@ const LOADING_STYLE = {
     height: '100vh',
     background: '#2b2b2b',
     color:'#fff',
-    fontSize: '5vw',
+    fontSize: '3vw',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'

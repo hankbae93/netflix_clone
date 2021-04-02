@@ -1,4 +1,5 @@
 .main-wrap {
+  overflow: hidden;
   position: relative;
 }
 .video-main {
@@ -91,4 +92,31 @@
   color: #fff;
   background: rgba(0, 0, 0, 0.4);
   border-left: 3px solid #fff;
+}
+
+/* sdd */
+.fuck {
+  position: relative;
+  z-index: 100000;
+}
+.fuck .item {
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1vw;
+}
+.fuck .slick-arrow {
+  position: static;
+  /* top: 0; */
+  z-index: 2;
+  width: 96px;
+  height: 100%;
+  /* font-size: 0; */
+  color: #fff;
+  /* font-weight: 700; */
+  background: rgba(0, 0, 0, 0.5);
+  transition: background 0.3s ease;
+  cursor: pointer;
 }

@@ -34,12 +34,13 @@ const MainVideo = () => {
                     </div>
                 </div>
             </div>
-            {data.filter((v) => v.myList).length > 5 
-            ? <VideoList heading={"내가 찜한 컨텐츠"} data={data.filter((v) => v.myList)} />  
-            :null}                
+    
+            <VideoList heading={"내가 찜한 컨텐츠"} data={data.filter((v) => v.myList)} />          
             <VideoList heading={"Action"} data={data.filter((v) => v.genres.includes("Action"))} />                         
             <TopVideoList data={[...data].filter((v) => v.rating >= 9).splice(0,10)}/>                 
             <VideoList heading={"킬링 타임 짧은 영화"} data={data.filter((v) => v.runtime < 90)} />      
+            <VideoList heading={"전체영화"} data={data} />      
+            <VideoList heading={"Romance"} data={data.filter((v) => v.genres.includes("Romance"))} />      
                
         </div>
     );

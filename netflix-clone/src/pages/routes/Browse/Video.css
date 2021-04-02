@@ -3,6 +3,10 @@
   position: relative;
   border-radius: 5px;
 }
+.list.list-less .video {
+  display: inline-block;
+  margin-right: 2px;
+}
 .video-container {
   position: relative;
 }
