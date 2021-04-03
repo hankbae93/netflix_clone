@@ -6,15 +6,46 @@
     <meta name="theme-color" content="#000000" />
     <meta content="영화 보기, 온라인 영화, 인터넷 영화, TV 시청, TV 온라인, 온라인 TV 프로그램, 인터넷 TV 프로그램,  TV 프로그램 보기, 영화 스트리밍, 스트리밍 tv, 인스턴트 스트리밍, 온라인 시청, 인터넷 시청,  영화, 영화 보기 대한민국, 온라인 TV 보기, 다운로드 불필요, 영화 풀 버전, 전체 영화" name="keywords"/>
     <meta content="스마트 TV, 태블릿, 스마트폰, PC, 게임 콘솔 등 다양한 디바이스에서 영화와 TV 프로그램을 마음껏 즐기세요." name="description"/>
-    
-    
-    <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />     -->
+    <meta author="Ranja" />    
     <title>Raflix 대한민국 - 인터넷으로 TV 프로그램과 영화를 시청하세요</title>
     <link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"/>
     <link rel="apple-touch-icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png"/>
+    <!-- Start Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafrex/spa-github-pages
+      // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
+      // ----------------------------------------------------------------------
+      // This script checks to see if a redirect is present in the query string
+      // and converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      (function (l) {
+        if (l.search) {
+          var q = {};
+          l.search.slice(1).split('&').forEach(function (v) {
+            var a = v.split('=');
+            q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+          });
+          if (q.p !== undefined) {
+            window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + (q.p || '') +
+              (q.q ? ('?' + q.q) : '') +
+              l.hash
+            );
+          }
+        }
+      }(window.location))
+    </script>
+  <!-- End Single Page Apps for GitHub Pages -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>    
   </body>
 </html>
+    
+    

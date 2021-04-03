@@ -7,7 +7,7 @@ const Header = () => {
         <header className="header">
             <h1>
                 <span className="hide">Raflix</span>                
-                <img src="../images/Netflix_Logo_PMS2.png" alt="" />               
+                <img src="/images/Devices.png" alt="" />               
             </h1>    
             <div className="login">
                 <Link to='/login'>로그인</Link>   
