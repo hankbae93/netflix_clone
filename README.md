@@ -32,6 +32,7 @@
 ### 📃 Browse 페이지
 
     - tech : context api, firebase database
+    - api : https://yts.mx/api/v2/list_movies.json?sort_by=rating
     - state : 유저, 유저 관련 영화 데이터, 정보 (좋아요, 싫어요, 내가 찜한 콘텐츠)
     - private : 로그인 인증없이 접속 불가 설정
     - keyword에 맞춰 액션영화, 로맨스영화, 내가 찜한 영화 등등으로 데이터 처리한 슬라이드 나열
