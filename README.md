@@ -1,6 +1,6 @@
 # Netflix Clone Project
 
-    site : https://ranjafunc.github.io/netflix_clone/
+    https://ranjafunc.github.io/netflix_clone/
 
 ## Tech
 

@@ -78,14 +78,13 @@ const priceDataComponent = (data, className, state, setState) => {
     )
 };
 
-const StepPriceTwo = ({ userData, setUserData }) => {
-    // const [price, setPrice] = useState('9500원');
+const StepPriceTwo = ({ userData, setUserData }) => {    
     const [priceSelect, setPriceSelect] = useState([
         ['click', '', ''],
-        ['click', '', '' ],
-        ['click', '', '' ],
-        ['click', '', '' ],
-        ['click', '', '' ],
+        ['click', '', ''],
+        ['click', '', ''],
+        ['click', '', ''],
+        ['click', '', ''],
     ]);
 
     const handleClick = () => {
@@ -95,6 +94,7 @@ const StepPriceTwo = ({ userData, setUserData }) => {
             price: priceData[1][dataNumber + 1]
         });
     };
+    
     return (
         <div className="step-priceinfo">
             <p className="step-current">2/3단계</p>

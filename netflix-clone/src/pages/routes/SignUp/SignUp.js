@@ -10,7 +10,7 @@ const SIGN_UP_FOOTER = {
 };
 
 const SignUp = ({ location }) => {
-    const EMAIL = location.state.email;
+    const EMAIL = location.state.email || '';
     return (
         <div className="sign-up">
             <header>

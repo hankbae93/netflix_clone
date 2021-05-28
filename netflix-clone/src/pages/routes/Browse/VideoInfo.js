@@ -50,13 +50,11 @@ const VideoInfo = ({ data, hoverFadeInfo }) => {
         });
     };
 
-    const animation = () => {        
-        // videoInfoRef.current.style.transform = 'scale(1.6)';
+    const animation = () => {                
         videoInfoRef.current.style.opacity = '1';
     };
 
-    const disAnimation = () => {
-        // videoInfoRef.current.style.transform = 'scale(1)';
+    const disAnimation = () => {        
         videoInfoRef.current.style.opacity = '0';
         hoverFadeInfo();
     };
